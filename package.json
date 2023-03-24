@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "e2e-pw-build": "tsc",
-    "example": "npm run e2e-pw-build && playwright test -c tests-out --config=tests-out/configs/playwright.config.js --headed"
+    "example": "npm run e2e-pw-build && playwright test -c tests-out --config=tests-out/configs/playwright.config.js --headed",
+    "test": "npm run e2e-pw-build && playwright test -c tests-out --config=tests-out/configs/playwright.config.js --grep @Homepage --headed"
   },
   "keywords": [],
   "author": "",

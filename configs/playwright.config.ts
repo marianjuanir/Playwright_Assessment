@@ -7,11 +7,12 @@ const playwright: PlaywrightTestConfig = {
     timeout: 30 * 1000,
     maxFailures: 2,
     use: {
+        baseURL: 'https://www.taskmaverick.com',
         trace: 'retain-on-failure',
         screenshot: 'only-on-failure',
         video: 'on'
     },
-    reporter: [['list'], ['html']],
+    reporter: [['list'], ['html', {open: 'always'}]],
     projects: [
         {
             name: 'Desktop Chrome',

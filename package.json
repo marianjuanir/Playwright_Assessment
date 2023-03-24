@@ -1,0 +1,19 @@
+{
+  "name": "playwright_assessment",
+  "version": "1.0.0",
+  "description": "\"# Playwright_Assessment\"",
+  "main": "index.js",
+  "scripts": {
+    "e2e-pw-build": "tsc",
+    "example": "npm run e2e-pw-build && playwright test -c tests-out --config=tests-out/configs/playwright.config.js --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.32.0"
+  },
+  "dependencies": {
+    "typescript": "^5.0.2"
+  }
+}

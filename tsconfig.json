@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "moduleResolution": "Node",
+      "outDir": "tests-out",
+      "module": "commonjs",
+      "types": ["node"],
+      "allowJs": false,
+      "sourceMap": true,
+      "target": "es6",
+      "resolveJsonModule": true,
+      "esModuleInterop": true
+    },
+    "include": ["**/*.ts", "**/*.json"],
+    "exclude": ["node_modules", "tests-out"]
+  }

@@ -6,7 +6,7 @@ const playwright: PlaywrightTestConfig = {
     retries: 0,
     timeout: 30 * 1000,
     maxFailures: 2,
-    //snapshotPathTemplate: '../__screenshots__/{testFilePath}',
+    snapshotPathTemplate: '{testDir}/__screenshots__/{testFilePath}/{arg}{ext}',
     use: {
         baseURL: 'https://www.taskmaverick.com',
         trace: 'retain-on-failure',

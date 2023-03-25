@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from "@playwright/test"
+import { test, expect, Locator, Page } from "@playwright/test"
 import fs from 'fs'
 
 export class Homepage {
@@ -6,7 +6,7 @@ export class Homepage {
     readonly button;
     readonly menuItems: Locator;
     readonly menuItem;
-    readonly block;
+    readonly block: (menuItem: string) => Locator;
     readonly link_LearnMore: Locator;
     readonly block2;
 
@@ -15,7 +15,7 @@ export class Homepage {
         this.button = (btnName: string): Locator => page.getByRole("button", { name: btnName });
         this.menuItems = page.locator("nav#w-dropdown-list-0").locator(page.getByRole("link"));
         this.menuItem = (menuName: string): Locator => page.locator("nav#w-dropdown-list-0").locator(page.getByRole("link", { name: menuName }));
-        this.block = (menuItem: string): Locator => page.getByRole('link', { name: menuItem });
+        this.block = (menuItem) => page.getByRole('link', { name: menuItem });
         this.link_LearnMore = page.locator('#Automate-Knowledge').getByRole('link', { name: 'Learn More' })
         // this.block2 = page.getByText(/Automate Knowledge/).getByRole('link', { name: 'Learn More' })
 
@@ -51,8 +51,8 @@ export class Homepage {
 
     async visualCompare(paramFileName: string) {
         await this.page.waitForLoadState('networkidle')
-        await this.page.screenshot({ path: `./tests-out/tests/homepage.spec.js-snapshots/${paramFileName}-Desktop-Chrome-win32.png` }) //get actual screenshot that gets saved in outDir
-        expect(fs.readFileSync(`./screenshots/${paramFileName}.png`)).toMatchSnapshot(`${paramFileName}.png`) //compare to reference screenshot        
+        await this.page.screenshot({ path: `${test.info().snapshotPath()}/${paramFileName}.png` }) //get actual screenshot
+        expect(fs.readFileSync(`./screenshots/${paramFileName}.png`)).toMatchSnapshot(`${paramFileName}.png`) //compare to reference screenshot               
     }
 
     getSelectorFromLocator(paramLocator: Locator) {
